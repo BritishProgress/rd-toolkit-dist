@@ -1,18 +1,23 @@
----
-permalink: /404.html
----
-
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset=utf-8>
-    <title>Redirecting...</title>
-    <link rel=canonical href="http://www.lunesu.com/index.html">
-    <meta http-equiv=refresh content="1; url=http://www.lunesu.com/index.html">
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <script>
+      // GitHub Pages redirect hack for SPA with HashRouter
+      // When a user navigates to a non-existent route, GitHub Pages serves this 404.html
+      // This script redirects to the root with the attempted path as a hash
+      var pathSegmentsToKeep = 0;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
+        '/#' + l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/') + 
+        (l.search ? '&' + l.search.slice(1) : '')
+      );
+    </script>
   </head>
   <body>
-    <h1>Redirecting...</h1>
-    <a href="http://www.lunesu.com/">Click here if you are not redirected.</a>
-    <script>var n=location.href.replace("index.php?/", "");if (n!=location.href)location=n;</script>
+    <p>Redirecting...</p>
   </body>
 </html>
